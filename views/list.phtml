@@ -1,0 +1,30 @@
+<?php include 'header.phtml';?>
+
+		<div class="sixteen columns">
+			<a href="/lists" class="full-width button">View all lists</a>
+		</div>
+
+		<div class="sixteen columns">
+			<div class="add-list hidden">
+				<input type="text" class="ten columns" id="listTitle" placeholder="Add a list title">
+			</div>
+			<div class="list-components">
+				<h2 class="list_title"><?php echo $this->list->title;?></h2>
+				<?php if ($this->action == 'edit'):?>
+				<input type="hidden" name="list_id" id="list_id" value="<?php echo $this->list->id;?>">
+				<div class="clearfix">
+					<input type="text" class="ten columns" id="list_item" placeholder="Add something here"/>
+				</div>
+				<?php endif;?>
+				<div class="components">
+					<?php foreach ($this->list->items as $key => $item):?>
+						<div class="list-component<?php if ($this->action == 'view'): if ($item->status == 0): echo ' not-finished'; else: echo ' finished'; endif; endif;?>" data-id="<?php echo $item->id;?>"><?php echo $item->item;?></div>
+					<?php endforeach; ?>
+				</div>
+				<?php if ($this->action == 'edit'):?>
+				<button id="done" class="full-width">Done Editing!</button>
+				<?php endif;?>
+			</div>			
+		</div>
+
+<?php include 'footer.phtml';?>

@@ -1,0 +1,15 @@
+<?php include 'header.phtml';?>
+
+		<div class="sixteen columns">
+			<a href="/lists" class="full-width button">View all lists</a>
+		</div>
+
+		<div class="sixteen columns">
+			<?php foreach ($this->lists as $list):?>
+			<div class="list">
+				<a href="/edit/<?php echo $list->id;?>"><h2><?php echo $list->title;?></h2></a>
+			</div>
+			<?php	endforeach;?>			
+		</div>
+
+<?php include 'footer.phtml';?>
